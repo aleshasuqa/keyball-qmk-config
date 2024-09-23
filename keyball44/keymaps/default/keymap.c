@@ -36,7 +36,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
       KC_TAB    ,    KC_Q     ,    KC_W     ,    KC_F     ,    KC_P     ,    KC_G     ,        KC_J     ,    KC_L     ,    KC_U     ,    KC_Y     ,   KC_SCLN   ,    KC_DEL   ,
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-      CW_TOGG   ,    KC_A     ,    KC_R     ,LCTL_T(KC_S) ,LGUI_T(KC_T) ,LALT_T(KC_D) ,    RALT_T(KC_H) ,RGUI_T(KC_N) ,RCTL_T(KC_E) ,    KC_I     ,     KC_O    ,    KC_QUOT  ,
+      CW_TOGG   ,    KC_A     ,    KC_R     , LCTL_T(KC_S), LGUI_T(KC_T), LALT_T(KC_D),     RALT_T(KC_H), RGUI_T(KC_N), RCTL_T(KC_E),    KC_I     ,     KC_O    ,    KC_QUOT  ,
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
       KC_LCTL   ,    KC_Z     ,    KC_X     ,    KC_C     ,    KC_V     ,    KC_B     ,        KC_K     ,    KC_M     ,   KC_COMM   ,    KC_DOT   ,   KC_SLSH   ,    TO(NUM)  ,
 //╰─────────────┴─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
@@ -50,7 +50,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
       KC_LCTL   ,    KC_A     ,    KC_F4    ,    KC_F5    ,    KC_F6    ,   KC_F11    ,       KC_LEFT   ,   KC_DOWN   ,    KC_UP    ,   KC_RGHT   ,     KC_O    ,    KC_F12   ,
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-      TO(FUN)   ,    KC_Z     ,    KC_F1    ,    KC_F2    ,    KC_F3    ,   KC_F12    ,       KC_BTN4   ,   KC_BTN1   ,   MO(FUN)   ,   KC_BTN2   ,   KC_BTN5   ,   TO(NUM)   ,
+      TO(FUN)   ,    KC_Z     ,    KC_F1    ,    KC_F2    ,    KC_F3    ,   KC_F12    ,       KC_BTN4   ,   KC_BTN1   ,   SCRL_MO   ,   KC_BTN2   ,   KC_BTN5   ,   TO(NUM)   ,
 //╰─────────────┴─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
                     KC_LALT   ,   KC_LGUI   ,   KC_ESC    ,   KC_SPC    ,   KC_LSFT   ,        SF_BS    ,   KC_ENT    ,   _______   ,   _______   ,   TO(BASE)
 //              ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯   ╰─────────────┴─────────────╯                           ╰─────────────╯
@@ -70,24 +70,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [FUN] = LAYOUT_universal( // FUN
 //╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-      QK_BOOT   ,    KC_Q     ,    KC_W     ,    KC_F     ,    KC_P     ,    KC_G     ,        KC_J     ,    KC_L     ,    KC_U     ,    KC_Y     ,   KC_SCLN   ,   QK_BOOT   ,
+      QK_BOOT   ,  KBC_SAVE   ,    KC_W     ,   AML_I50   ,  SCRL_DVI   ,  CPI_I100   ,       RGB_MOD   ,   RGB_HUI   ,   RGB_SAI   ,   RGB_VAI   ,   KC_SCLN   ,   QK_BOOT   ,
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-      KC_LCTL   ,    KC_A     ,    KC_R     ,    KC_S     ,    KC_T     ,    KC_D     ,        KC_H     ,    KC_N     ,    KC_E     ,    KC_I     ,     KC_O    ,    KC_QUOT  ,
+      KC_LCTL   ,   KBC_RST   ,    KC_R     ,   AML_D50   ,  SCRL_DVD   ,  CPI_D100   ,       RGB_RMOD  ,   RGB_HUD   ,   RGB_SAD   ,   RGB_VAD   ,     KC_O    ,    KC_QUOT  ,
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-      MO(4)     ,    KC_Z     ,    KC_X     ,    KC_C     ,    KC_V     ,    KC_B     ,        KC_K     ,    KC_M     ,   KC_COMM   ,    KC_DOT   ,   KC_SLSH   ,    TO(2)    ,
+      _______   ,    KC_Z     ,    KC_X     ,  SSNP_VRT   ,  SSNP_VRT   ,   AML_TO    ,       RGB_TOG   ,   RGB_M_P   ,   KC_COMM   ,    KC_DOT   ,   KC_SLSH   ,    TO(2)    ,
 //╰─────────────┴─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
-                    KC_LALT   ,   KC_LGUI   ,   KC_ESC    ,   KC_SPC    ,   KC_LSFT   ,        SF_BS    ,   KC_ENT    ,   _______   ,   _______   ,   TO(BASE)
-//              ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯   ╰─────────────┴─────────────╯                           ╰─────────────╯
-  ),
-  [4] = LAYOUT_universal( // TEST
-//╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-      QK_BOOT   ,    KC_Q     ,    KC_W     ,    KC_F     ,    KC_P     ,    KC_G     ,        KC_J     ,    KC_L     ,    KC_U     ,    KC_Y     ,   KC_SCLN   ,   QK_BOOT   ,
-//├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-      KC_LCTL   ,    KC_A     ,    KC_R     ,    KC_S     ,    KC_T     ,    KC_D     ,        KC_H     ,    KC_N     ,    KC_E     ,    KC_I     ,     KC_O    ,    KC_QUOT  ,
-//├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-      CW_TOGG   ,    KC_Z     ,    KC_X     ,    KC_C     ,    KC_V     ,    KC_B     ,        KC_K     ,    KC_M     ,   KC_COMM   ,    KC_DOT   ,   KC_SLSH   ,    TO(2)    ,
-//╰─────────────┴─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
-                    KC_LALT   ,   KC_LGUI   ,   KC_ESC    ,   KC_SPC    ,   KC_LSFT   ,        SF_BS    ,   KC_ENT    ,   _______   ,   _______   ,   TO(BASE)
+                    KC_LALT   ,   KC_LGUI   ,   KC_ESC    ,   KC_SPC    ,   KC_LSFT   ,        SF_BS    ,    KC_ENT   ,   _______   ,   _______   ,   TO(BASE)
 //              ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯   ╰─────────────┴─────────────╯                           ╰─────────────╯
   ),
 };
@@ -101,11 +90,76 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
 #ifdef OLED_ENABLE
 
-#    include "lib/oledkit/oledkit.h"
+// #    include "lib/oledkit/oledkit.h"
+//
+// void oledkit_render_info_user(void) {
+//     //keyball_oled_render_keyinfo();
+//     //keyball_oled_render_ballinfo();
+//     keyball_oled_render_layerinfo();
+// }
+#include "animation.h"
 
-void oledkit_render_info_user(void) {
-    keyball_oled_render_keyinfo();
-    keyball_oled_render_ballinfo();
-    keyball_oled_render_layerinfo();
+oled_rotation_t oled_init_user(oled_rotation_t rotation) {
+    return is_keyboard_master() ? OLED_ROTATION_270 : rotation;
+}
+
+void master_render(void) {
+    oled_set_cursor(0, 1);
+
+    switch (get_highest_layer(layer_state)) {
+        case BASE:
+            oled_write("BASE", false);
+            break;
+        case NAV:
+            oled_write("NAV", false);
+            break;
+        case NUM:
+            oled_write("NUM", false);
+            break;
+        case FUN:
+            oled_write("FUN", false);
+            break;
+    }
+
+}
+
+#define FRAME_DURATION 200
+
+uint32_t timer = 0;
+uint8_t c_frame = 0;
+
+static void render_anim(void) {
+
+    uint16_t frame_sizes[2] = {
+        sizeof(epd_bitmap_frame_0),
+        sizeof(epd_bitmap_frame_1)
+    };
+
+    // Run animation
+    if (timer_elapsed(timer) > FRAME_DURATION) {
+        // Set timer to updated time
+        timer = timer_read();
+
+        // Increment frame
+        c_frame = (c_frame + 1) % (sizeof(epd_bitmap_allArray) / sizeof(epd_bitmap_allArray[0]));
+
+        // Draw frame to OLED
+        oled_write_raw_P(epd_bitmap_allArray[c_frame], frame_sizes[c_frame]);
+    }
+}
+
+void periph_render(void) {
+    render_anim();
+}
+
+bool oled_task_user(void) {
+
+    if (is_keyboard_master()) {
+        master_render();
+    } else {
+        periph_render();
+    }
+
+    return false;
 }
 #endif
