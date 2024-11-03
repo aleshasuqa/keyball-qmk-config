@@ -62,7 +62,6 @@ __attribute__((weak)) void keyball_on_adjust_layout(keyball_adjust_t v) {}
 //////////////////////////////////////////////////////////////////////////////
 // Static utilities
 
-// add16 adds two int16_t with clipping.
 static int16_t add16(int16_t a, int16_t b) {
     int16_t r = a + b;
     if (a >= 0 && b >= 0 && r < 0) {
@@ -377,7 +376,6 @@ static void rpc_set_cpi_invoke(void) {
 
 //////////////////////////////////////////////////////////////////////////////
 // OLED utility
-
 #ifdef OLED_ENABLE
 // clang-format off
 const char PROGMEM code_to_name[] = {
@@ -411,7 +409,7 @@ void keyball_oled_render_ballinfo(void) {
     oled_write(format_4d(keyball_get_cpi()) + 1, false);
     oled_write_P(PSTR("00 "), false);
 
-    // indicate scroll snap mode: "VT" (vertical), "HN" (horiozntal), and "SCR" (free)
+    // indicate scroll snap mode: "VT" (vertical), "HO" (horizontal), and "SCR" (free)
 #if 1 && KEYBALL_SCROLLSNAP_ENABLE == 2
     switch (keyball_get_scrollsnap_mode()) {
         case KEYBALL_SCROLLSNAP_MODE_VERTICAL:
@@ -511,6 +509,7 @@ void keyball_oled_render_layerinfo(void) {
 #endif
 }
 
+
 //////////////////////////////////////////////////////////////////////////////
 // Public API functions
 
@@ -605,25 +604,25 @@ void housekeeping_task_kb(void) {
 }
 #endif
 
-static void pressing_keys_update(uint16_t keycode, keyrecord_t *record) {
+// static void pressing_keys_update(uint16_t keycode, keyrecord_t *record) {
     // Process only valid keycodes.
-    if (keycode >= 4 && keycode < 57) {
-        char value = pgm_read_byte(code_to_name + keycode - 4);
-        char where = BL;
-        if (!record->event.pressed) {
-            // Swap `value` and `where` when releasing.
-            where = value;
-            value = BL;
-        }
-        // Rewrite the last `where` of pressing_keys to `value` .
-        for (int i = 0; i < KEYBALL_OLED_MAX_PRESSING_KEYCODES; i++) {
-            if (keyball.pressing_keys[i] == where) {
-                keyball.pressing_keys[i] = value;
-                break;
-            }
-        }
-    }
-}
+    // if (keycode >= 4 && keycode < 57) {
+    //     char value = pgm_read_byte(code_to_name + keycode - 4);
+    //     char where = BL;
+    //     if (!record->event.pressed) {
+    //         // Swap `value` and `where` when releasing.
+    //         where = value;
+    //         value = BL;
+    //     }
+    //     // Rewrite the last `where` of pressing_keys to `value` .
+    //     for (int i = 0; i < KEYBALL_OLED_MAX_PRESSING_KEYCODES; i++) {
+    //         if (keyball.pressing_keys[i] == where) {
+    //             keyball.pressing_keys[i] = value;
+    //             break;
+    //         }
+    //     }
+    // }
+// }
 
 #ifdef POINTING_DEVICE_AUTO_MOUSE_ENABLE
 bool is_mouse_record_kb(uint16_t keycode, keyrecord_t* record) {
@@ -640,7 +639,7 @@ bool process_record_kb(uint16_t keycode, keyrecord_t *record) {
     keyball.last_kc  = keycode;
     keyball.last_pos = record->event.key;
 
-    pressing_keys_update(keycode, record);
+    // pressing_keys_update(keycode, record);
 
     if (!process_record_user(keycode, record)) {
         return false;
