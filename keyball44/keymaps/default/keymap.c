@@ -28,19 +28,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define GAME 5
 #define VOL_UP KC_KB_VOLUME_UP
 #define VOL_DN KC_KB_VOLUME_DOWN
+#define SF_BS MT(MOD_LSFT,KC_BSPC)
 
 enum custom_keycodes {
-    SMTD_KEYCODES_BEGIN = SAFE_RANGE,
-    HMR_R, // reads as C(ustom) + KC_A, but you may give any name here
-    HMR_S,
-    HMR_T,
-
-    HMR_N,
-    HMR_E,
-    HMR_I,
-    SMTD_KEYCODES_END,
+    MOSP = SAFE_RANGE,
 };
-#include "sm_td.h"
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -49,21 +41,21 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 //╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
       KC_TAB    ,    KC_Q     ,    KC_W     ,    KC_F     ,    KC_P     ,    KC_G     ,        KC_J     ,    KC_L     ,    KC_U     ,    KC_Y     ,   KC_QUOT   ,    QK_REP   ,
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-      KC_ESC    ,    KC_A     ,    HMR_R    ,    HMR_S    ,    HMR_T    ,    KC_D     ,        KC_H     ,    HMR_N    ,    HMR_E    ,    HMR_I    ,     KC_O    ,    KC_ENT   ,
+      KC_ESC    ,    KC_A     , LALT_T(KC_R), LCTL_T(KC_S), LGUI_T(KC_T),    KC_D     ,        KC_H     , LGUI_T(KC_N), LCTL_T(KC_E), LALT_T(KC_I),     KC_O    ,    KC_ENT   ,
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
       CW_TOGG   ,    KC_Z     ,    KC_X     ,    KC_C     ,    KC_V     ,    KC_B     ,        KC_K     ,    KC_M     ,   KC_COMM   ,    KC_DOT   ,   KC_SLSH   ,    KC_UNDS  ,
 //╰─────────────┴─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
-                    TO(GAME)  ,   TO(FUN)   ,  OSL(SYM)   ,LT(NAV,KC_SPC),OSM(MOD_LSFT),  SFT_T(KC_BSPC),   OSL(NUM)  ,  _______   ,   _______   ,   TO(BASE)
+                    TO(GAME)  ,   TO(FUN)   ,  OSL(SYM)   ,LT(NAV,KC_SPC),OSM(MOD_LSFT),       SF_BS    ,   OSL(NUM)  ,  _______   ,   _______   ,   TO(BASE)
 //              ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯   ╰─────────────┴─────────────╯                           ╰─────────────╯
   ),
 
   [NAV] = LAYOUT_universal( // NAV
 //╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-      _______   ,   _______   ,    KC_F7    ,    KC_F8    ,    KC_F9    ,   KC_F10    ,       KC_BRMD   ,   KC_BRMU   ,   VOL_DN    ,   VOL_UP    ,   _______   ,   _______   ,
+      _______   ,   _______   ,    KC_F7    ,    KC_F8    ,    KC_F9    ,   KC_F10    ,       KC_BRMD   ,   KC_BRMU   ,   KC_VOLU   ,   KC_VOLD   ,   _______   ,   _______   ,
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
       _______   ,   _______   ,    KC_F4    ,    KC_F5    ,    KC_F6    ,   KC_F11    ,       KC_LEFT   ,   KC_DOWN   ,    KC_UP    ,   KC_RGHT   ,   _______   ,   _______   ,
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-      _______   ,   _______   ,    KC_F1    ,    KC_F2    ,    KC_F3    ,   KC_F12    ,       KC_BTN4   ,   KC_BTN1   ,   SCRL_MO   ,   KC_BTN2   ,   KC_BTN5   ,   _______   ,
+      _______   ,   _______   ,    KC_F1    ,    KC_F2    ,    KC_F3    ,   KC_F12    ,       KC_BTN4   ,   KC_BTN1   ,   SCRL_MO   ,   KC_BTN2   ,   KC_BTN5   ,     MOSP    ,
 //╰─────────────┴─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
                     _______   ,   _______   ,   _______   ,   _______   ,   _______   ,       _______   ,   _______   ,   _______   ,   _______   ,   _______
 //              ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯   ╰─────────────┴─────────────╯                           ╰─────────────╯
@@ -95,11 +87,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
   [FUN] = LAYOUT_universal( // FUN
 //╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮   ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-      QK_BOOT   ,    KC_F2    ,    KC_F7    ,    KC_F8    ,    KC_F9    ,   KC_F10    ,       RGB_MOD   ,   RGB_HUI   ,   RGB_SAI   ,   RGB_VAI   ,   KC_SCLN   ,   QK_BOOT   ,
+      QK_BOOT   ,    KC_F2    ,    KC_F7    ,    KC_F8    ,    KC_F9    ,   KC_F10    ,       RGB_RMOD  ,   RGB_MOD   ,   RGB_SAI   ,   RGB_VAI   ,   KC_SCLN   ,   QK_BOOT   ,
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-      _______   ,    KC_A     ,    KC_F4    ,    KC_F5    ,    KC_F6    ,   KC_F11    ,       RGB_RMOD  ,OSM(MOD_LGUI),OSM(MOD_LCTL),OSM(MOD_LALT),     KC_O    ,    KC_QUOT  ,
+      _______   ,    KC_A     ,    KC_F4    ,    KC_F5    ,    KC_F6    ,   KC_F11    ,       RGB_HUD   ,   RGB_HUI   ,OSM(MOD_LCTL),OSM(MOD_LALT),   _______   ,   _______   ,
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-      TO(FUN)   ,    KC_Z     ,    KC_F1    ,    KC_F2    ,    KC_F3    ,   KC_F12    ,       RGB_TOG   ,   RGB_M_P   ,   KC_COMM   ,    KC_DOT   ,   KC_SLSH   ,    TO(2)    ,
+      _______   ,    KC_Z     ,    KC_F1    ,    KC_F2    ,    KC_F3    ,   KC_F12    ,       RGB_TOG   ,   _______   ,   _______   ,   _______   ,   _______   ,   _______   ,
 //╰─────────────┴─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤   ├─────────────┼─────────────┼─────────────┼─────────────┴─────────────┴─────────────╯
                     _______   ,   _______   ,   _______   ,   _______   ,   _______   ,       _______   ,   _______   ,   _______   ,   _______   ,   _______
 //              ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯   ╰─────────────┴─────────────╯                           ╰─────────────╯
@@ -119,16 +111,36 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 };
 // clang-format on
 
-void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
-    switch (keycode) {
-        SMTD_MT(HMR_T, KC_T, KC_LEFT_GUI)
-        SMTD_MT(HMR_S, KC_S, KC_LEFT_CTRL)
-        SMTD_MT(HMR_R, KC_R, KC_LEFT_ALT)
+#include "features/custom_shift_keys.h"
 
-        SMTD_MT(HMR_N, KC_E, KC_LEFT_GUI)
-        SMTD_MT(HMR_E, KC_E, KC_LEFT_CTRL)
-        SMTD_MT(HMR_I, KC_I, KC_LEFT_ALT)
+const custom_shift_key_t custom_shift_keys[] = {
+    {KC_BSPC , KC_DEL},
+};
+uint8_t NUM_CUSTOM_SHIFT_KEYS =
+    sizeof(custom_shift_keys) / sizeof(custom_shift_key_t);
+
+static uint8_t base_cpi;
+
+bool process_record_user(uint16_t keycode, keyrecord_t* record) {
+    if (!process_custom_shift_keys(keycode, record)) {
+        return false;
     }
+
+    switch (keycode) {
+        case MOSP:
+            if (record->event.pressed) {
+                uint8_t cur_cpi = keyball_get_cpi();
+                if (cur_cpi == 30)
+                    keyball_set_cpi(base_cpi);
+                else {
+                    base_cpi = cur_cpi;
+                    keyball_set_cpi(30);
+                }
+            }
+            break;
+    }
+
+    return true;
 }
 
 layer_state_t layer_state_set_user(layer_state_t state) {
